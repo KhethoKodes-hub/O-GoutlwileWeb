@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - O-goutlwile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            background: #f8f9fa;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(10, 40, 80, 0.95), rgba(20, 60, 120, 0.95));
+            padding: 1rem 5%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            height: 40vh;
+            background: linear-gradient(135deg, rgba(10, 40, 80, 0.85), rgba(20, 60, 120, 0.75)),
+                        url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1600&h=600&fit=crop') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.1), transparent 50%);
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #FFD700;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* About Content */
+        .about-content {
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #0a2850;
+            font-weight: 700;
+        }
+
+        .about-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 5rem;
+            align-items: center;
+        }
+
+        .about-text h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #0a2850;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .about-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Mission & Vision */
+        .mission-vision {
+            background: linear-gradient(135deg, #0a2850 0%, #143c78 100%);
+            color: white;
+            padding: 5rem;
+            border-radius: 20px;
+            margin-bottom: 5rem;
+        }
+
+        .mv-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .mission, .vision {
+            padding: 2rem;
+        }
+
+        .mv-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .mv-title span {
+            font-size: 2.5rem;
+        }
+
+        .mv-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #e0e0e0;
+        }
+
+        /* Philosophy */
+        .philosophy {
+            margin-bottom: 5rem;
+        }
+
+        .philosophy-content {
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .philosophy-content p {
+            font-size: 1.2rem;
+            line-height: 1.9;
+            margin-bottom: 3rem;
+            color: #555;
+        }
+
+        .pillars {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .pillar {
+            background: white;
+            padding: 2.5rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .pillar:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(10, 40, 80, 0.15);
+        }
+
+        .pillar-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .pillar h3 {
+            font-size: 1.5rem;
+            color: #0a2850;
+            margin-bottom: 1rem;
+        }
+
+        .pillar p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        /* Leadership */
+        .leadership {
+            margin-bottom: 5rem;
+        }
+
+        .leader-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .leader-image {
+            height: 300px;
+            background: linear-gradient(135deg, #0a2850, #143c78);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .leader-image span {
+            font-size: 5rem;
+            color: white;
+        }
+
+        .leader-info {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .leader-info h3 {
+            font-size: 1.8rem;
+            color: #0a2850;
+            margin-bottom: 0.5rem;
+        }
+
+        .leader-info .position {
+            font-size: 1.2rem;
+            color: #FFA500;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .leader-info p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Divisions */
+        .divisions {
+            margin-bottom: 5rem;
+        }
+
+        .divisions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .division {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .division:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(10, 40, 80, 0.15);
+        }
+
+        .division-icon {
+            height: 120px;
+            background: linear-gradient(135deg, #0a2850, #143c78);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .division-icon span {
+            font-size: 3.5rem;
+            color: white;
+        }
+
+        .division-content {
+            padding: 2rem;
+        }
+
+        .division-content h3 {
+            font-size: 1.5rem;
+            color: #0a2850;
+            margin-bottom: 1rem;
+        }
+
+        .division-content p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .division-features {
+            list-style: none;
+        }
+
+        .division-features li {
+            padding: 0.5rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .division-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #FFD700;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0a2850 0%, #143c78 100%);
+            color: white;
+            padding: 5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #e0e0e0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #0a2850;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2850, #143c78);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .about-intro, .mv-container, .pillars, .divisions-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .mission-vision {
+                padding: 3rem 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">O-goutlwile</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>About O-goutlwile</h1>
+            <p>Excellence Across Multiple Sectors</p>
+        </div>
+    </section>
+
+    <section class="about-content">
+        <div class="about-intro">
+            <div class="about-text">
+                <h2>Our Story</h2>
+                <p>O-Goutlwile (Pty) Ltd is a dynamic and proudly South African company established in 2025 with a diverse operational focus on mining staff transportation, beauty services, and event management. Our foundation is built on a passion for excellence, reliability, and innovation across multiple sectors.</p>
+                <p>We began by providing safe, efficient, and reliable transportation services to mining personnel — ensuring punctuality, comfort, and safety in every journey. As the company grew, we expanded into the beauty industry, offering high-quality services that empower individuals to look and feel their best.</p>
+                <p>In 2025, O-Goutlwile took an exciting step into the events industry, launching its very own inspirational event titled "Make Heaven Crowded", envisioned to become an annual gathering that uplifts, unites, and inspires communities.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=500&fit=crop" alt="O-goutlwile Team">
+            </div>
+        </div>
+
+        <div class="mission-vision">
+            <div class="mv-container">
+                <div class="mission">
+                    <h3 class="mv-title"><span>🎯</span> Our Mission</h3>
+                    <p class="mv-content">To provide exceptional, people-centered services across transportation, beauty, and event management — driven by integrity, innovation, and excellence.</p>
+                </div>
+                <div class="vision">
+                    <h3 class="mv-title"><span>🔭</span> Our Vision</h3>
+                    <p class="mv-content">To become a leading multi-sector brand in South Africa, recognized for transforming lives through safe mobility, beauty empowerment, and purposeful events that inspire hope and community growth.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="philosophy">
+            <h2 class="section-title">Our Philosophy</h2>
+            <div class="philosophy-content">
+                <p>At O-Goutlwile, we believe in service with purpose. Every division of our company exists to add value — whether through ensuring safe passage for mine workers, enhancing confidence through beauty, or inspiring hearts through events. We are guided by faith, community, and commitment to quality in everything we do.</p>
+                
+                <div class="pillars">
+                    <div class="pillar">
+                        <span class="pillar-icon">⚖️</span>
+                        <h3>Integrity</h3>
+                        <p>Upholding honesty and transparency in all operations. We build trust through ethical practices and open communication with all stakeholders.</p>
+                    </div>
+                    <div class="pillar">
+                        <span class="pillar-icon">⭐</span>
+                        <h3>Excellence</h3>
+                        <p>Striving for superior service delivery that exceeds expectations. We continuously improve our processes to deliver outstanding results.</p>
+                    </div>
+                    <div class="pillar">
+                        <span class="pillar-icon">💝</span>
+                        <h3>Impact</h3>
+                        <p>Creating lasting positive change in the communities we serve. Our success is measured by the value we bring to people's lives.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="leadership">
+            <h2 class="section-title">Our Leadership</h2>
+            <div class="leader-card">
+                <div class="leader-image">
+                    <span>👩‍💼</span>
+                </div>
+                <div class="leader-info">
+                    <h3>Outlwile Grace Bonokwane</h3>
+                    <div class="position">Chief Operation Officer</div>
+                    <p>With a vision for excellence and a commitment to service, our COO leads O-Goutlwile with dedication and strategic insight, ensuring all divisions operate at their highest potential.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="divisions">
+            <h2 class="section-title">Our Divisions</h2>
+            <div class="divisions-grid">
+                <div class="division">
+                    <div class="division-icon">
+                        <span>🚐</span>
+                    </div>
+                    <div class="division-content">
+                        <h3>Mining Staff Transportation</h3>
+                        <p>Reliable shuttle and staff transport solutions for mining companies, focused on safety, punctuality, and regulatory compliance.</p>
+                        <ul class="division-features">
+                            <li>Qualified, experienced drivers</li>
+                            <li>Well-maintained vehicle fleet</li>
+                            <li>Strict safety protocols</li>
+                            <li>24/7 operational support</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="division">
+                    <div class="division-icon">
+                        <span>✨</span>
+                    </div>
+                    <div class="division-content">
+                        <h3>Beauty Division</h3>
+                        <p>Premium beauty services and products that promote self-care, confidence, and personal empowerment.</p>
+                        <ul class="division-features">
+                            <li>Professional beauty treatments</li>
+                            <li>High-quality beauty products</li>
+                            <li>Skilled beauty professionals</li>
+                            <li>Customer-focused approach</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="division">
+                    <div class="division-icon">
+                        <span>🎉</span>
+                    </div>
+                    <div class="division-content">
+                        <h3>Events Division</h3>
+                        <p>Creators and hosts of "Make Heaven Crowded", an annual inspirational event celebrating faith, music, and unity.</p>
+                        <ul class="division-features">
+                            <li>Inspirational event planning</li>
+                            <li>Community-focused gatherings</li>
+                            <li>Uplifting experiences</li>
+                            <li>Purpose-driven events</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>Ready to Experience Excellence?</h2>
+            <p>Whether you need reliable transportation, professional beauty services, or inspirational event management, O-goutlwile delivers quality and reliability.</p>
+            <a href="contact.html" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>O-goutlwile</h3>
+            <p>Excellence in Mining Transportation, Beauty Services & Event Management</p>
+            <div class="social-links">
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="LinkedIn">💼</a>
+                <a href="#" title="Twitter">🐦</a>
+            </div>
+            <p>&copy; 2025 O-goutlwile (Pty) Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for active navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

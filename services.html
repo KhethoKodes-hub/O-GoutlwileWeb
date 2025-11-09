@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - O-goutlwile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            background: #f8f9fa;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(10, 40, 80, 0.95), rgba(20, 60, 120, 0.95));
+            padding: 1rem 5%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            height: 40vh;
+            background: linear-gradient(135deg, rgba(10, 40, 80, 0.85), rgba(20, 60, 120, 0.75)),
+                        url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=600&fit=crop') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.1), transparent 50%);
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #FFD700;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Services Overview */
+        .services-overview {
+            padding: 6rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #0a2850;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Service Detail Sections */
+        .service-detail {
+            margin-bottom: 6rem;
+        }
+
+        .service-header {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 3rem;
+            align-items: center;
+        }
+
+        .service-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+            height: 400px;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .service-info h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: #0a2850;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .service-info h2 span {
+            font-size: 2.5rem;
+        }
+
+        .service-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #555;
+        }
+
+        .service-features {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .feature {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            font-size: 1.8rem;
+            color: #FFD700;
+            flex-shrink: 0;
+        }
+
+        .feature-content h4 {
+            font-size: 1.2rem;
+            color: #0a2850;
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-content p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+
+        /* Service CTA */
+        .service-cta {
+            background: linear-gradient(135deg, #0a2850 0%, #143c78 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .service-cta h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-cta p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #0a2850;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.4s;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Special Event Highlight */
+        .special-event {
+            background: linear-gradient(135deg, #0a2850 0%, #143c78 100%);
+            color: white;
+            padding: 5rem 2rem;
+            border-radius: 20px;
+            margin: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .special-event::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?w=800&h=400&fit=crop') center/cover;
+            opacity: 0.2;
+        }
+
+        .special-event-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .special-event h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: #FFD700;
+        }
+
+        .special-event h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .special-event p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #e0e0e0;
+        }
+
+        .event-highlights {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .event-highlight {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem 1.5rem;
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .event-highlight span {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .event-highlight h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-highlight p {
+            font-size: 1rem;
+            margin-bottom: 0;
+        }
+
+        /* Service Comparison */
+        .service-comparison {
+            margin: 6rem 0;
+        }
+
+        .comparison-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .table-header {
+            background: linear-gradient(135deg, #0a2850, #143c78);
+            color: white;
+            padding: 1.5rem 2rem;
+        }
+
+        .table-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .table-header p {
+            color: #e0e0e0;
+        }
+
+        .table-content {
+            padding: 2rem;
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 2rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+
+        .comparison-row.header {
+            font-weight: 700;
+            color: #0a2850;
+            border-bottom: 2px solid #0a2850;
+        }
+
+        .comparison-cell {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .comparison-cell span {
+            font-size: 1.2rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0a2850 0%, #143c78 100%);
+            color: white;
+            padding: 5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #e0e0e0;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2850, #143c78);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .service-header, .features-grid, .event-highlights {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .comparison-row {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .service-image {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">O-goutlwile</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>Our Services</h1>
+            <p>Comprehensive Solutions Across Multiple Industries</p>
+        </div>
+    </section>
+
+    <section class="services-overview">
+        <h2 class="section-title">What We Offer</h2>
+        <p class="section-subtitle">At O-goutlwile, we deliver excellence across three distinct service divisions, each dedicated to meeting your specific needs with professionalism and reliability.</p>
+
+        <!-- Mining Staff Transportation Service -->
+        <div class="service-detail">
+            <div class="service-header">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=600&h=400&fit=crop" alt="Mining Staff Transportation">
+                </div>
+                <div class="service-info">
+                    <h2><span>🚐</span> Mining Staff Transportation</h2>
+                    <p>We provide safe, reliable, and efficient transportation solutions specifically designed for mining personnel. Our focus is on ensuring punctuality, comfort, and safety in every journey to and from mining sites.</p>
+                    <p>With a fleet of modern, well-maintained vehicles and professional drivers, we help mining companies maintain operational efficiency while prioritizing the wellbeing of their workforce.</p>
+                </div>
+            </div>
+
+            <div class="service-features">
+                <h3>Our Transportation Solutions</h3>
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">🛡️</div>
+                        <div class="feature-content">
+                            <h4>Safety First Approach</h4>
+                            <p>Comprehensive safety protocols, regular vehicle inspections, and trained drivers to ensure secure transportation.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">⏱️</div>
+                        <div class="feature-content">
+                            <h4>Punctuality Guaranteed</h4>
+                            <p>Strict adherence to schedules with real-time tracking and communication for shift changes and emergencies.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🚌</div>
+                        <div class="feature-content">
+                            <h4>Modern Fleet</h4>
+                            <p>Well-maintained, comfortable vehicles equipped with safety features and amenities for long journeys.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📋</div>
+                        <div class="feature-content">
+                            <h4>Regulatory Compliance</h4>
+                            <p>Full compliance with all transport regulations and mining industry requirements for staff transportation.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-cta">
+                <h3>Need Reliable Staff Transportation?</h3>
+                <p>Contact us today to discuss customized transportation solutions for your mining operations.</p>
+                <a href="contact.html" class="cta-button">Get a Quote</a>
+            </div>
+        </div>
+
+        <!-- Beauty Services -->
+        <div class="service-detail">
+            <div class="service-header">
+                <div class="service-info">
+                    <h2><span>✨</span> Beauty Services</h2>
+                    <p>Our beauty division offers premium services and products designed to promote self-care, confidence, and personal empowerment. We believe that looking your best helps you feel your best.</p>
+                    <p>Our skilled beauty professionals use high-quality products and innovative techniques to deliver exceptional results for every client, whether for everyday beauty or special occasions.</p>
+                </div>
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=600&h=400&fit=crop" alt="Beauty Services">
+                </div>
+            </div>
+
+            <div class="service-features">
+                <h3>Our Beauty Offerings</h3>
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">💄</div>
+                        <div class="feature-content">
+                            <h4>Professional Makeup</h4>
+                            <p>Expert makeup application for events, photoshoots, or everyday wear using premium cosmetic products.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">💇</div>
+                        <div class="feature-content">
+                            <h4>Hair Styling & Treatments</h4>
+                            <p>From cutting and styling to deep conditioning treatments for healthy, beautiful hair.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🧴</div>
+                        <div class="feature-content">
+                            <h4>Skincare Services</h4>
+                            <p>Facials, skin analysis, and personalized skincare regimens for radiant, healthy skin.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">👰</div>
+                        <div class="feature-content">
+                            <h4>Special Occasion Packages</h4>
+                            <p>Complete beauty packages for weddings, corporate events, and other special celebrations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-cta">
+                <h3>Ready to Enhance Your Natural Beauty?</h3>
+                <p>Book an appointment with our skilled beauty professionals and experience the O-goutlwile difference.</p>
+                <a href="contact.html" class="cta-button">Book Appointment</a>
+            </div>
+        </div>
+
+        <!-- Special Event Highlight -->
+        <div class="special-event">
+            <div class="special-event-content">
+                <h2>Make Heaven Crowded</h2>
+                <h3>Our Signature Inspirational Event</h3>
+                <p>Launched in 2025, "Make Heaven Crowded" is O-goutlwile's flagship annual event that brings communities together through faith, music, and unity. This inspirational gathering is designed to uplift, unite, and inspire positive change.</p>
+                
+                <div class="event-highlights">
+                    <div class="event-highlight">
+                        <span>🙏</span>
+                        <h4>Spiritual Upliftment</h4>
+                        <p>Inspiring messages and worship experiences that strengthen faith and community bonds.</p>
+                    </div>
+                    <div class="event-highlight">
+                        <span>🎵</span>
+                        <h4>Musical Celebration</h4>
+                        <p>Uplifting music performances from talented artists that create an atmosphere of joy and unity.</p>
+                    </div>
+                    <div class="event-highlight">
+                        <span>🤝</span>
+                        <h4>Community Building</h4>
+                        <p>Opportunities to connect with like-minded individuals and build lasting relationships.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Events Management Service -->
+        <div class="service-detail">
+            <div class="service-header">
+                <div class="service-image">
+                    <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?w=600&h=400&fit=crop" alt="Events Management">
+                </div>
+                <div class="service-info">
+                    <h2><span>🎉</span> Events Management</h2>
+                    <p>Our events division specializes in creating meaningful, purpose-driven experiences that bring people together and promote positive change. From our signature "Make Heaven Crowded" event to corporate functions and community gatherings.</p>
+                    <p>We handle every aspect of event planning and execution, ensuring seamless experiences that exceed expectations and create lasting memories.</p>
+                </div>
+            </div>
+
+            <div class="service-features">
+                <h3>Our Event Services</h3>
+                <div class="features-grid">
+                    <div class="feature">
+                        <div class="feature-icon">📅</div>
+                        <div class="feature-content">
+                            <h4>Complete Event Planning</h4>
+                            <p>End-to-end event management from concept development to post-event analysis.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🏟️</div>
+                        <div class="feature-content">
+                            <h4>Venue Selection & Management</h4>
+                            <p>Strategic venue sourcing, negotiation, and on-site management for optimal event experiences.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">🎤</div>
+                        <div class="feature-content">
+                            <h4>Entertainment & Programming</h4>
+                            <p>Curated entertainment, speakers, and program elements that align with your event goals.</p>
+                        </div>
+                    </div>
+                    <div class="feature">
+                        <div class="feature-icon">📊</div>
+                        <div class="feature-content">
+                            <h4>Logistics & Operations</h4>
+                            <p>Comprehensive logistical planning including technical support, staffing, and attendee management.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="service-cta">
+                <h3>Planning Your Next Event?</h3>
+                <p>Let us help you create an unforgettable experience that inspires and brings people together.</p>
+                <a href="contact.html" class="cta-button">Discuss Your Event</a>
+            </div>
+        </div>
+
+        <!-- Service Comparison -->
+        <div class="service-comparison">
+            <h2 class="section-title">Service Comparison</h2>
+            <p class="section-subtitle">Understanding how our diverse service offerings can meet your specific needs</p>
+            
+            <div class="comparison-table">
+                <div class="table-header">
+                    <h3>Which Service Is Right For You?</h3>
+                    <p>Compare our service divisions to find the perfect solution for your requirements</p>
+                </div>
+                <div class="table-content">
+                    <div class="comparison-row header">
+                        <div class="comparison-cell">Service Feature</div>
+                        <div class="comparison-cell">Transportation</div>
+                        <div class="comparison-cell">Beauty</div>
+                        <div class="comparison-cell">Events</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">Primary Focus</div>
+                        <div class="comparison-cell"><span>🚐</span> Staff Mobility</div>
+                        <div class="comparison-cell"><span>✨</span> Personal Care</div>
+                        <div class="comparison-cell"><span>🎉</span> Community Engagement</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">Target Clients</div>
+                        <div class="comparison-cell">Mining Companies</div>
+                        <div class="comparison-cell">Individuals & Groups</div>
+                        <div class="comparison-cell">Communities & Organizations</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">Service Delivery</div>
+                        <div class="comparison-cell">Scheduled Transport</div>
+                        <div class="comparison-cell">Appointment-based</div>
+                        <div class="comparison-cell">Project-based</div>
+                    </div>
+                    <div class="comparison-row">
+                        <div class="comparison-cell">Key Benefit</div>
+                        <div class="comparison-cell">Operational Efficiency</div>
+                        <div class="comparison-cell">Confidence & Wellbeing</div>
+                        <div class="comparison-cell">Inspiration & Unity</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to Experience Our Services?</h2>
+            <p>Whether you need reliable transportation for your workforce, professional beauty services, or inspirational event management, O-goutlwile delivers excellence across all divisions.</p>
+            <a href="contact.html" class="cta-button">Get In Touch Today</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>O-goutlwile</h3>
+            <p>Excellence in Mining Transportation, Beauty Services & Event Management</p>
+            <div class="social-links">
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="LinkedIn">💼</a>
+                <a href="#" title="Twitter">🐦</a>
+            </div>
+            <p>&copy; 2025 O-goutlwile (Pty) Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for active navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - O-goutlwile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #1a1a1a;
+            overflow-x: hidden;
+            background: #f8f9fa;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: linear-gradient(135deg, rgba(10, 40, 80, 0.95), rgba(20, 60, 120, 0.95));
+            padding: 1rem 5%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 1px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #FFD700;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #FFD700, #FFA500);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Page Header */
+        .page-header {
+            height: 40vh;
+            background: linear-gradient(135deg, rgba(10, 40, 80, 0.85), rgba(20, 60, 120, 0.75)),
+                        url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600&h=600&fit=crop') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            margin-top: 70px;
+        }
+
+        .page-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 30% 50%, rgba(255, 215, 0, 0.1), transparent 50%);
+        }
+
+        .page-header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: #FFD700;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* Contact Content */
+        .contact-content {
+            padding: 6rem 5%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #0a2850;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 4rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Contact Container */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 6rem;
+        }
+
+        /* Contact Information */
+        .contact-info {
+            padding: 2rem;
+        }
+
+        .contact-info h2 {
+            font-size: 2.2rem;
+            color: #0a2850;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .contact-info h2 span {
+            font-size: 2.5rem;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            color: #555;
+        }
+
+        .contact-items {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(10, 40, 80, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: #FFD700;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: 1.3rem;
+            color: #0a2850;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-details p {
+            color: #666;
+            margin-bottom: 0;
+            font-size: 1rem;
+        }
+
+        .contact-details a {
+            color: #0a2850;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .contact-details a:hover {
+            color: #FFA500;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #0a2850;
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            font-family: inherit;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #FFD700;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #0a2850;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Service Specific Contacts */
+        .service-contacts {
+            margin-bottom: 6rem;
+        }
+
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(10, 40, 80, 0.15);
+        }
+
+        .service-icon {
+            height: 120px;
+            background: linear-gradient(135deg, #0a2850, #143c78);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .service-icon span {
+            font-size: 3.5rem;
+            color: white;
+        }
+
+        .service-content {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            color: #0a2850;
+            margin-bottom: 1rem;
+        }
+
+        .service-content p {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .service-contact-btn {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #0a2850;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .service-contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        /* Map & Location */
+        .location-section {
+            margin-bottom: 6rem;
+        }
+
+        .location-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .location-info h3 {
+            font-size: 2rem;
+            color: #0a2850;
+            margin-bottom: 1.5rem;
+        }
+
+        .location-info p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .location-features {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .location-features li {
+            padding: 0.8rem 0;
+            color: #666;
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .location-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #FFD700;
+            font-weight: 700;
+            font-size: 1.2rem;
+            width: 25px;
+            height: 25px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .map-placeholder {
+            background: linear-gradient(135deg, #0a2850, #143c78);
+            border-radius: 15px;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .map-placeholder span {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .map-placeholder h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .map-placeholder p {
+            color: #e0e0e0;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 6rem;
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 1.5rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0a2850;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(10, 40, 80, 0.05);
+        }
+
+        .faq-question span {
+            font-size: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .faq-answer {
+            padding: 0 2rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .faq-answer p {
+            padding-bottom: 1.5rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-question {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        .faq-item.active .faq-question span {
+            transform: rotate(45deg);
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0a2850 0%, #143c78 100%);
+            color: white;
+            padding: 5rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #e0e0e0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.2rem 2.5rem;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            color: #0a2850;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.4s;
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid #FFD700;
+            box-shadow: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 35px rgba(255, 215, 0, 0.6);
+        }
+
+        .cta-button.secondary:hover {
+            background: rgba(255, 215, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #0a2850, #143c78);
+            color: white;
+            padding: 3rem 5%;
+            text-align: center;
+            margin-top: 5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #FFD700;
+            transform: translateY(-3px);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .contact-container, 
+            .location-container,
+            .service-cards {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .contact-form {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">O-goutlwile</a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <div class="page-header-content">
+            <h1>Contact Us</h1>
+            <p>Get in Touch with O-goutlwile Today</p>
+        </div>
+    </section>
+
+    <section class="contact-content">
+        <h2 class="section-title">We're Here to Help</h2>
+        <p class="section-subtitle">Reach out to us for any inquiries about our transportation, beauty, or event services. Our team is ready to assist you.</p>
+
+        <div class="contact-container">
+            <div class="contact-info">
+                <h2><span>📞</span> Get In Touch</h2>
+                <p>We'd love to hear from you. Whether you have questions about our services, need a quote, or want to discuss a potential project, our team is here to help.</p>
+                
+                <div class="contact-items">
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Visit Our Office</h4>
+                            <p>123 Business District<br>Johannesburg, South Africa</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div class="contact-details">
+                            <h4>Call Us</h4>
+                            <p><a href="tel:+27725738862">+27 72 573 8862</a><br>Mon-Fri: 8:00 AM - 6:00 PM</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h4>Email Us</h4>
+                            <p><a href="mailto:info@ogoutlwile.co.za">info@ogoutlwile.co.za</a><br>We respond within 24 hours</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">⏰</div>
+                        <div class="contact-details">
+                            <h4>Business Hours</h4>
+                            <p>Monday - Friday: 8:00 AM - 6:00 PM<br>Saturday: 9:00 AM - 4:00 PM<br>Sunday: Closed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone">
+                </div>
+                <div class="form-group">
+                    <label for="service">Service Interest *</label>
+                    <select id="service" required>
+                        <option value="">Select a service</option>
+                        <option value="transportation">Mining Staff Transportation</option>
+                        <option value="beauty">Beauty Services</option>
+                        <option value="events">Events Management</option>
+                        <option value="make-heaven-crowded">Make Heaven Crowded Event</option>
+                        <option value="general">General Inquiry</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="message">Message *</label>
+                    <textarea id="message" placeholder="Please provide details about your inquiry..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Send Message</button>
+            </form>
+        </div>
+
+        <!-- Service Specific Contacts -->
+        <div class="service-contacts">
+            <h2 class="section-title">Service-Specific Inquiries</h2>
+            <p class="section-subtitle">Contact our specialized teams for specific service-related questions</p>
+            
+            <div class="service-cards">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <span>🚐</span>
+                    </div>
+                    <div class="service-content">
+                        <h3>Transportation Services</h3>
+                        <p>For mining staff transportation inquiries, fleet management, or custom transportation solutions.</p>
+                        <a href="mailto:transport@ogoutlwile.co.za" class="service-contact-btn">Email Transportation Team</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <span>✨</span>
+                    </div>
+                    <div class="service-content">
+                        <h3>Beauty Services</h3>
+                        <p>For appointments, beauty consultations, or questions about our beauty products and services.</p>
+                        <a href="mailto:beauty@ogoutlwile.co.za" class="service-contact-btn">Email Beauty Team</a>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <span>🎉</span>
+                    </div>
+                    <div class="service-content">
+                        <h3>Events Management</h3>
+                        <p>For event planning, "Make Heaven Crowded" tickets, or corporate event inquiries.</p>
+                        <a href="mailto:events@ogoutlwile.co.za" class="service-contact-btn">Email Events Team</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Map & Location -->
+        <div class="location-section">
+            <h2 class="section-title">Our Location</h2>
+            <p class="section-subtitle">Visit us at our offices in Johannesburg</p>
+            
+            <div class="location-container">
+                <div class="location-info">
+                    <h3>Find Our Office</h3>
+                    <p>Our centrally located office in Johannesburg makes it easy to meet with our team and discuss your needs in person. We welcome scheduled appointments to ensure we can give you our full attention.</p>
+                    <p>For first-time visitors, we recommend scheduling your visit in advance so we can prepare for your arrival and make your experience as productive as possible.</p>
+                    
+                    <ul class="location-features">
+                        <li>Free parking available on premises</li>
+                        <li>Wheelchair accessible facility</li>
+                        <li>Meeting rooms available for client use</li>
+                        <li>Close to public transportation</li>
+                        <li>Secure building with 24/7 surveillance</li>
+                    </ul>
+                </div>
+                <div class="map-placeholder">
+                    <span>🗺️</span>
+                    <h4>Interactive Map</h4>
+                    <p>Our office location would be displayed here with an interactive map.</p>
+                    <p>123 Business District, Johannesburg</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-subtitle">Quick answers to common questions about our services and company</p>
+            
+            <div class="faq-container">
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What areas do you serve for mining transportation?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We primarily serve mining operations in and around Johannesburg and the surrounding Gauteng province. However, we can arrange transportation solutions for mining sites throughout South Africa depending on the specific requirements and scale of the operation.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        How far in advance should I book beauty services?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We recommend booking at least 1-2 weeks in advance for standard beauty services. For special occasions like weddings or major events, we suggest booking 4-6 weeks ahead to ensure availability. We do accommodate last-minute appointments when possible, based on technician availability.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        When is the next "Make Heaven Crowded" event?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>The next "Make Heaven Crowded" inspirational event is scheduled for September 2026. This annual gathering typically takes place in September each year. Please check our events page or contact our events team for specific dates, ticket information, and event details as they become available.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        Do you offer corporate accounts for transportation services?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Yes, we offer specialized corporate accounts for mining companies with customized transportation solutions, dedicated account management, detailed reporting, and flexible billing options. Contact our transportation team to discuss setting up a corporate account tailored to your company's specific needs.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        What safety measures do you have for transportation services?
+                        <span>+</span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Our transportation services adhere to strict safety protocols including regular vehicle maintenance checks, certified and experienced drivers, comprehensive insurance coverage, GPS tracking, and 24/7 support. All our drivers undergo rigorous background checks and continuous safety training to ensure the highest standards of passenger safety.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final CTA Section -->
+        <div class="cta-section">
+            <h2>Ready to Get Started?</h2>
+            <p>Contact us today to discuss how O-goutlwile can meet your transportation, beauty, or event needs with our signature commitment to excellence.</p>
+            <div class="cta-buttons">
+                <a href="tel:+27725738862" class="cta-button">Call Us Now</a>
+                <a href="mailto:info@ogoutlwile.co.za" class="cta-button secondary">Send an Email</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <h3>O-goutlwile</h3>
+            <p>Excellence in Mining Transportation, Beauty Services & Event Management</p>
+            <div class="social-links">
+                <a href="#" title="Facebook">📘</a>
+                <a href="#" title="Instagram">📷</a>
+                <a href="#" title="LinkedIn">💼</a>
+                <a href="#" title="Twitter">🐦</a>
+            </div>
+            <p>&copy; 2025 O-goutlwile (Pty) Ltd. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script for active navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPage = window.location.pathname.split('/').pop();
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            navLinks.forEach(link => {
+                if (link.getAttribute('href') === currentPage) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Form submission
+            document.getElementById('contactForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We will get back to you within 24 hours.');
+                this.reset();
+            });
+
+            // FAQ functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
